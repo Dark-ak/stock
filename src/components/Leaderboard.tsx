@@ -37,7 +37,7 @@ const Leaderboard = () => {
 
     const [slippage,setSlippage] = useState<number | null>(0)
 
-    const handleSlippage = (event: React.MouseEvent<HTMLElement>,newSlip: number | null) => {
+    const handleSlippage = (_event: React.MouseEvent<HTMLElement>,newSlip: number | null) => {
         setSlippage(newSlip)
     }
     

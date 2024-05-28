@@ -1,5 +1,4 @@
 import { Box, Typography } from '@mui/material'
-import React from 'react'
 import 'chartjs-adapter-date-fns';
 import {
   Chart as ChartJS,
@@ -11,8 +10,8 @@ import {
   Tooltip,
   Filler,
   Legend,
-  scales,
-  TimeScale
+  TimeScale,
+  ChartOptions
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker'
@@ -29,18 +28,18 @@ ChartJS.register(
   Legend
 );
 
-const createGradient = (startColor: string, endColor: string) => {
-  const ctx = document.createElement('canvas').getContext('2d');
-  const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-  gradient.addColorStop(0, startColor);
-  gradient.addColorStop(1, endColor);
-  return gradient;
-};
+// const createGradient = (startColor: string, endColor: string) => {
+//   const ctx = document.createElement('canvas').getContext('2d');
+//   const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+//   gradient.addColorStop(0, startColor);
+//   gradient.addColorStop(1, endColor);
+//   return gradient;
+// };
 
 
 const Graph = () => {
 
-  const options = {
+  const options: ChartOptions<'line'> = {
     responsive: true,
     maintainAspectRatio: false,
     scales: {
@@ -51,9 +50,6 @@ const Graph = () => {
         type: "time",
         offset:true,
         position: "bottom",
-        autSkip: "true",
-        maxRotation: 0,
-        sampleSize: 100,
         ticks:{
           major: {
             enabled: true

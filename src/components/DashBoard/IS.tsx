@@ -7,6 +7,7 @@ import {
     Title,
     Tooltip,
     Legend,
+    ChartOptions,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { Box, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
@@ -22,7 +23,7 @@ ChartJS.register(
     Legend
 );
 
-const options = {
+const options:ChartOptions<'bar'> = {
     maintainAspectRatio: false,
     responsive: true,
     plugins: {
@@ -43,14 +44,8 @@ const options = {
     scales: {
         y: {
             position: "right",
-            font: {
-                family: "Source Code Pro, monospace"
-            }
         },
         x: {
-            font: {
-                family: "Source Code Pro, monospace"
-            }
         }
     }
 };
@@ -61,7 +56,7 @@ const ISBar = () => {
     const [type, setType] = useState<string | null>("annual")
 
     const handleType = (
-        event: React.MouseEvent<HTMLElement>,
+        _event: React.MouseEvent<HTMLElement>,
         newType: string | null,
       ) => {
         setType(newType);
